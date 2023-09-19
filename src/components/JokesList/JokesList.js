@@ -4,12 +4,12 @@ import "./JokesList.css";
 
 import Joke from "../Joke/Joke";
 
-export default function JokesList() {
+export default function JokesList(props) {
   return (
-    <>
-      <ul>
-        <Joke />
-      </ul>
-    </>
+    <ul>
+      {props.jokes.map((e) => (
+        <Joke joke={e} />
+      ))}
+    </ul>
   );
 }

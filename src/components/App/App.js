@@ -6,5 +6,5 @@ import JokePage from "../JokePage/JokePage";
 import JokesPage from "../JokesPage/JokesPage";
 
 export default function App() {
-  return <div>App</div>;
+  return <JokesPage />;
 }
