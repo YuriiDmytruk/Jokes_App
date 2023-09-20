@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Col, Row } from "react-bootstrap";
 
+const componentMergin = { marginTop: "20px" };
+
 export default function JokesControl(props) {
   const [amount, setAmount] = useState();
+  const [filter, setFilter] = useState();
   const [isValid, setValid] = useState(false);
 
   const validateJokesAmountInput = (e) => {
@@ -21,25 +24,27 @@ export default function JokesControl(props) {
     props.fetchJokes(amount);
   };
 
+  const changeFilter = () => {
+    props.setFilter(filter);
+  };
+
   return (
-    <Container style={{ marginTop: "20px" }}>
+    <Container style={componentMergin}>
       <Row>
         <Col>
           <Row>
             <Col>
-              <Container>
-                <Form.Control
-                  type="text"
-                  id="inputPassword5"
-                  aria-describedby="passwordHelpBlock"
-                  onChange={(e) => {
-                    validateJokesAmountInput(e);
-                  }}
-                />
-                <Form.Text muted>
-                  Enter number of jokes to add. Value must be 1-10
-                </Form.Text>
-              </Container>
+              <Form.Control
+                type="text"
+                id="inputPassword5"
+                aria-describedby="passwordHelpBlock"
+                onChange={(e) => {
+                  validateJokesAmountInput(e);
+                }}
+              />
+              <Form.Text muted>
+                Enter number of jokes to add. Value must be 1-10
+              </Form.Text>
             </Col>
             <Col md="auto">
               <Button disabled={!isValid} onClick={changeAmount}>
@@ -51,16 +56,22 @@ export default function JokesControl(props) {
         <Col>
           <Row>
             <Col>
-              <Form.Select aria-label="Default select example">
-                <option value="all">All</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                }}
+              >
+                {[props.all].concat(props.categories).map((e, i) => (
+                  <option key={i} value={e}>
+                    {e}
+                  </option>
+                ))}
               </Form.Select>
               <Form.Text muted>Choose joke category</Form.Text>
             </Col>
             <Col md="auto">
-              <Button>Filter</Button>
+              <Button onClick={changeFilter}>Filter</Button>
             </Col>
           </Row>
         </Col>
@@ -68,13 +79,3 @@ export default function JokesControl(props) {
     </Container>
   );
 }
-
-/*<input
-        placeholder="input amount of Jokes"
-        onChange={(e) => {
-          validateJokesAmountInput(e);
-        }}
-      />
-      <button onClick={changeAmount} disabled={!isValid}>
-        ADD
-      </button> */
