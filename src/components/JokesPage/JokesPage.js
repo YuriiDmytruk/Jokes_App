@@ -26,7 +26,11 @@ export default function JokesPage() {
       let data = await response.json();
 
       data = data.map((e, i) => {
-        return { joke: e.joke, id: jokes.length + i };
+        return {
+          joke: e.joke,
+          id: jokes.length + i,
+          category: getRandomCategory(),
+        };
       });
       setJokes(jokes.concat(data));
     } catch (error) {
@@ -40,4 +44,9 @@ export default function JokesPage() {
       <JokesList jokes={jokes} />
     </>
   );
+}
+
+function getRandomCategory() {
+  const categories = ["Programing", "Dad Joke", "Animals", "Car Joke"];
+  return categories[Math.floor(Math.random() * categories.length)];
 }
