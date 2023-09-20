@@ -1,18 +1,15 @@
 import React from "react";
-
 import Joke from "../Joke/Joke";
-
-import StyledJokesList from "./styled/StyledJokesList";
-import Container from "../../Container";
+import { Row, Container } from "react-bootstrap";
 
 export default function JokesList(props) {
   return (
     <Container>
-      <StyledJokesList>
+      <Row>
         {props.jokes.map((e) => (
           <Joke joke={e} showAll={false} />
         ))}
-      </StyledJokesList>
+      </Row>
     </Container>
   );
 }

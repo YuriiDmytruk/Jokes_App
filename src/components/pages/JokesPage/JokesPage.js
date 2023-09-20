@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import "./JokesPage.css";
 
-import JokesList from "../JokesList/JokesList";
-import JokesControl from "../JokesControl/JokesCotrol";
+import JokesList from "../../JokesList/JokesList";
+import JokesControl from "../../JokesControl/JokesCotrol";
 
 const url = "https://api.api-ninjas.com/v1/dadjokes?limit=";
 
