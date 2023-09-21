@@ -10,7 +10,7 @@ export default function JokesControl(props) {
 
   const validateJokesAmountInput = (e) => {
     if (e.target.value.match(/^[0-9]+$/) != null) {
-      const number = +e.target.value;
+      const number = parseInt(e.target.value);
       if (number >= 1 && number <= 10) {
         setAmount(number);
         setValid(true);
