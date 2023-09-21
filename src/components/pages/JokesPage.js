@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import JokesList from "../../JokesList/JokesList";
-import JokesControl from "../../JokesControl/JokesCotrol";
+import JokesList from "../JokesList";
+import JokesControl from "../JokesCotrol";
 
 const URL = "https://api.api-ninjas.com/v1/dadjokes?limit=";
 const ALL = "ALL";
@@ -37,13 +37,10 @@ export default function JokesPage() {
     }
   }
 
-  const filterJokes = () => {
-    return filter === ALL ? jokes : jokes.filter((e) => e.category === filter);
-  };
+  const filterJokes = () =>
+    filter === ALL ? jokes : jokes.filter((e) => e.category === filter);
 
-  const getUniqueCategoris = () => {
-    return [...new Set(jokes.map((e) => e.category))];
-  };
+  const getUniqueCategoris = () => [...new Set(jokes.map((e) => e.category))];
 
   return (
     <>
@@ -58,7 +55,7 @@ export default function JokesPage() {
   );
 }
 
-function getRandomCategory() {
-  const categories = ["Programing", "Dad Joke", "Animals", "Car Joke"];
-  return categories[Math.floor(Math.random() * categories.length)];
-}
+const categories = ["Programing", "Dad Joke", "Animals", "Car Joke"];
+
+const getRandomCategory = () =>
+  categories[Math.floor(Math.random() * categories.length)];
