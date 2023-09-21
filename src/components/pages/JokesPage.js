@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import JokesList from "../JokesList";
-import JokesControl from "../JokesCotrol";
+import JokesList from '../JokesList';
+import JokesControl from '../JokesCotrol';
 
-import { fetchJokes } from "../../api";
+import { fetchJokes } from '../../api';
 
-const ALL = "ALL";
+const ALL = 'ALL';
 
 export default function JokesPage() {
   const [jokes, setJokes] = useState([]);

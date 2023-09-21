@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Button, Container, Form, Col, Row } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 
-const componentMergin = { marginTop: "20px" };
+const componentMergin = { marginTop: '20px' };
 
 export default function JokesControl(props) {
   const [amount, setAmount] = useState();

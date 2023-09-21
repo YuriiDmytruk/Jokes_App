@@ -1,9 +1,9 @@
-import React from "react";
-import { Card, Container } from "react-bootstrap";
+import React from 'react';
+import { Card, Container } from 'react-bootstrap';
 //import { useParams } from "react-router-dom";
 
-const cardMargin = { marginTop: "20px" };
-const textSize = { fontSize: "150%" };
+const cardMargin = { marginTop: '20px' };
+const textSize = { fontSize: '150%' };
 
 export default function JokePage() {
   //const { id } = useParams();
@@ -20,7 +20,7 @@ export default function JokePage() {
 }
 
 const JOKE = {
-  category: "Dad Joke",
+  category: 'Dad Joke',
   id: 0,
-  joke: "My dad died because he couldn’t remember his blood type. He kept insisting we “be positive,” but it’s just so hard without him.",
+  joke: 'My dad died because he couldn’t remember his blood type. He kept insisting we “be positive,” but it’s just so hard without him.',
 };

@@ -1,18 +1,18 @@
-import React from "react";
-import { Button, Card, Col, Container } from "react-bootstrap";
+import React from 'react';
+import { Button, Card, Col, Container } from 'react-bootstrap';
 
 const cardSize = {
-  width: "17rem",
-  height: "10rem",
-  margin: "10px auto",
+  width: '17rem',
+  height: '10rem',
+  margin: '10px auto',
 };
-const cardTextSize = { height: "3rem" };
+const cardTextSize = { height: '3rem' };
 const CHARS_IN_JOKE = 50;
-const DOTS = "...";
+const DOTS = '...';
 
 export default function Joke(props) {
   const checkClickHendler = () => {
-    window.location.href = window.location.href + "joke/" + props.joke.id;
+    window.location.href = window.location.href + 'joke/' + props.joke.id;
   };
 
   return (

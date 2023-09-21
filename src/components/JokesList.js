@@ -1,7 +1,7 @@
-import React from "react";
-import { Row, Container } from "react-bootstrap";
+import React from 'react';
+import { Row, Container } from 'react-bootstrap';
 
-import Joke from "./Joke";
+import Joke from './Joke';
 
 export default function JokesList(props) {
   return (
