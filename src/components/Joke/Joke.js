@@ -12,7 +12,7 @@ const DOTS = "...";
 
 export default function Joke(props) {
   const checkClickHendler = () => {
-    console.log(props.joke.id);
+    window.location.href = window.location.href + "joke/" + props.joke.id;
   };
 
   return (

@@ -1,10 +1,12 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
+//import { useParams } from "react-router-dom";
 
 const cardMargin = { marginTop: "20px" };
 const textSize = { fontSize: "150%" };
 
 export default function JokePage() {
+  //const { id } = useParams();
   return (
     <Container style={cardMargin}>
       <Card>
