@@ -21,7 +21,7 @@ export default function JokesControl(props) {
   };
 
   const changeAmount = () => {
-    props.fetchJokes(amount);
+    props.fetchJokes(props.jokes, props.setJokes, amount);
   };
 
   const changeFilter = () => {
