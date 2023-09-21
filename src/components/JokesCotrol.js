@@ -4,8 +4,8 @@ import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 const componentMergin = { marginTop: '20px' };
 
 export default function JokesControl(props) {
-  const [amount, setAmount] = useState();
-  const [filter, setFilter] = useState();
+  const [amount, setAmount] = useState(0);
+  const [filter, setFilter] = useState(props.all);
   const [isValid, setValid] = useState(false);
 
   const validateJokesAmountInput = (e) => {
@@ -21,6 +21,8 @@ export default function JokesControl(props) {
   };
 
   const changeAmount = () => {
+    document.getElementById('inputAmount').value = '';
+    setAmount(0);
     props.fetchJokes(props.jokes, props.setJokes, amount);
   };
 
@@ -36,8 +38,7 @@ export default function JokesControl(props) {
             <Col>
               <Form.Control
                 type="text"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
+                id="inputAmount"
                 onChange={(e) => {
                   validateJokesAmountInput(e);
                 }}

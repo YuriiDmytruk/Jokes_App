@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { JokesPage, JokePage, NavBar } from './index';
+import { JokesPage, NavBar } from './index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<JokesPage />} />
-        <Route path="/joke/:id" element={<JokePage />} />
+        <Route path="/joke/:id" element={<JokesPage />} />
 
         <Route path="*" element={<JokesPage />} />
       </Routes>

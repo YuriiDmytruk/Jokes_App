@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { JokesList, JokesControl } from '../index';
+import { JokesList, JokesControl, JokePopUp } from '../index';
 
 import { fetchJokes } from '../../api';
 
@@ -26,6 +26,7 @@ export default function JokesPage() {
         all={ALL}
       />
       <JokesList jokes={filterJokes()} />
+      <JokePopUp jokes={jokes} />
     </>
   );
 }
