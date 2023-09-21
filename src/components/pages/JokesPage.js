@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import JokesList from '../JokesList';
-import JokesControl from '../JokesCotrol';
+import { JokesList, JokesControl } from '../index';
 
 import { fetchJokes } from '../../api';
 

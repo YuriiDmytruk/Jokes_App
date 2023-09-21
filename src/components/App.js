@@ -1,12 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import { JokesPage, JokePage, NavBar } from './index';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import JokesPage from './pages/JokesPage';
-import JokePage from './pages/JokePage';
-
-import NavBar from './NavBar';
 
 export default function App() {
   return (
