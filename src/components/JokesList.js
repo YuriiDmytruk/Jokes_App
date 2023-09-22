@@ -4,7 +4,6 @@ import { Row, Container } from 'react-bootstrap';
 import { Joke } from './index';
 
 export default function JokesList(props) {
-  return (
     <Container>
       <Row>
         {props.jokes.map((e) => (
@@ -12,5 +11,4 @@ export default function JokesList(props) {
         ))}
       </Row>
     </Container>
-  );
 }
