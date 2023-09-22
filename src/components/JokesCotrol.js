@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+
+import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 
 const componentMergin = { marginTop: '20px' };
 

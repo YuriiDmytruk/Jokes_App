@@ -1,6 +1,6 @@
 import React from 'react';
-import { Row, Container } from 'react-bootstrap';
 
+import { Row, Container } from 'react-bootstrap';
 import { Joke } from './index';
 
 export default function JokesList(props) {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+import { Modal, Button } from 'react-bootstrap';
 
 export default function JokePopUp() {
   const [show, setShow] = useState(false);

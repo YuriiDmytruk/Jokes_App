@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { JokesList, JokesControl, JokePopUp } from '../index';
-import { fetchJokes } from '../../api';
 import { useSelector } from 'react-redux';
+
+import { JokesList, JokesControl } from '../index';
+
+import { fetchJokes } from '../../api';
 
 const ALL = 'ALL';
 
