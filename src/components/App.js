@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { JokesPage, NavBar, JokePopUp } from './index';
 
-export default function App() {
+const App = () => (
   <>
     <NavBar />
     <Routes>
@@ -19,5 +19,7 @@ export default function App() {
       />
       <Route path="*" element={<JokesPage />} />
     </Routes>
-  </>;
-}
+  </>
+);
+
+export default App;

@@ -7,7 +7,7 @@ import { CardSize, CardTextSize } from './styled/Joke';
 const CHARS_IN_JOKE = 50;
 const DOTS = '...';
 
-export default function Joke(props) {
+const Joke = (props) => (
   <Col>
     <Container>
       <CardSize>
@@ -26,5 +26,7 @@ export default function Joke(props) {
         </Card>
       </CardSize>
     </Container>
-  </Col>;
-}
+  </Col>
+);
+
+export default Joke;
