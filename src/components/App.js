@@ -1,18 +1,25 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { JokesPage, NavBar } from './index';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function App() {
-  return (
-    <>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<JokesPage />} />
-        <Route path="/joke/:id" element={<JokesPage />} />
+import { JokesPage, NavBar, JokePopUp } from './index';
 
-        <Route path="*" element={<JokesPage />} />
-      </Routes>
-    </>
-  );
-}
+const App = () => (
+  <>
+    <NavBar />
+    <Routes>
+      <Route path="/" element={<JokesPage />} />
+      <Route
+        path="/joke/:id"
+        element={
+          <>
+            <JokesPage />
+            <JokePopUp />
+          </>
+        }
+      />
+      <Route path="*" element={<JokesPage />} />
+    </Routes>
+  </>
+);
+
+export default App;

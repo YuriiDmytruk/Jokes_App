@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { JokesList, JokesControl, JokePopUp } from '../index';
+import { JokesList, JokesControl } from '../index';
 
 import { fetchJokes } from '../../api';
 
 const ALL = 'ALL';
 
-export default function JokesPage() {
-  const [jokes, setJokes] = useState([]);
+export default function JokesPage(props) {
   const [filter, setFilter] = useState(ALL);
+  const jokes = useSelector((state) => state.jokes);
 
   const filterJokes = () =>
     filter === ALL ? jokes : jokes.filter((e) => e.category === filter);
@@ -19,14 +20,12 @@ export default function JokesPage() {
     <>
       <JokesControl
         fetchJokes={fetchJokes}
-        setJokes={setJokes}
-        jokes={jokes}
+        jokesLength={jokes.length}
         setFilter={setFilter}
         categories={getUniqueCategoris()}
         all={ALL}
       />
       <JokesList jokes={filterJokes()} />
-      <JokePopUp jokes={jokes} />
     </>
   );
 }

@@ -1,35 +1,32 @@
 import React from 'react';
-import { Button, Card, Col, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const cardSize = {
-  width: '17rem',
-  height: '10rem',
-  margin: '10px auto',
-};
-const cardTextSize = { height: '3rem' };
+import { Button, Card, Col, Container } from 'react-bootstrap';
+import { CardSize, CardTextSize } from './styled/Joke';
+
 const CHARS_IN_JOKE = 50;
 const DOTS = '...';
 
-export default function Joke(props) {
-  const checkClickHendler = () => {
-    window.location.href = window.location.href + 'joke/' + props.joke.id;
-  };
-
-  return (
-    <Col>
-      <Container>
-        <Card style={cardSize}>
+const Joke = (props) => (
+  <Col>
+    <Container>
+      <CardSize>
+        <Card>
           <Card.Body>
             <Card.Title tag="h5">{props.joke.category}</Card.Title>
-            <Card.Text style={cardTextSize}>
-              {props.joke.joke.slice(0, CHARS_IN_JOKE) + DOTS}
+            <Card.Text>
+              <CardTextSize>
+                {props.joke.joke.slice(0, CHARS_IN_JOKE) + DOTS}
+              </CardTextSize>
             </Card.Text>
-            <Button color="primary" onClick={checkClickHendler}>
-              Check
-            </Button>
+            <Link to={`/joke/${props.joke.id}`}>
+              <Button color="primary">Check</Button>
+            </Link>
           </Card.Body>
         </Card>
-      </Container>
-    </Col>
-  );
-}
+      </CardSize>
+    </Container>
+  </Col>
+);
+
+export default Joke;
