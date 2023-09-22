@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
 import { ComponentMergin } from './styled/JokesControl';
 
-import { ADD_JOKES } from '../store/types';
+import { fetchJokes } from '../redux-saga/jokesReducer';
 
 export default function JokesControl(props) {
   const [amount, setAmount] = useState(0);
@@ -25,13 +25,11 @@ export default function JokesControl(props) {
   };
 
   const changeAmount = async () => {
-    const jokes = await props.fetchJokes(props.jokesLength, amount);
-    dispatch({
-      type: ADD_JOKES,
-      jokes: jokes,
-    });
+    dispatch(fetchJokes(props.jokesLength, amount));
+
     document.getElementById('inputAmount').value = '';
-    setAmount(0);
+    setAmount('');
+    setValid(false);
   };
 
   const changeFilter = () => {
