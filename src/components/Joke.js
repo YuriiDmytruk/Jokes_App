@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Card, Col, Container } from 'react-bootstrap';
 
 const cardSize = {
@@ -11,10 +12,6 @@ const CHARS_IN_JOKE = 50;
 const DOTS = '...';
 
 export default function Joke(props) {
-  const checkClickHendler = () => {
-    window.location.href = window.location.href + 'joke/' + props.joke.id;
-  };
-
   return (
     <Col>
       <Container>
@@ -24,9 +21,9 @@ export default function Joke(props) {
             <Card.Text style={cardTextSize}>
               {props.joke.joke.slice(0, CHARS_IN_JOKE) + DOTS}
             </Card.Text>
-            <Button color="primary" onClick={checkClickHendler}>
-              Check
-            </Button>
+            <Link to={`/joke/${props.joke.id}`}>
+              <Button color="primary">Check</Button>
+            </Link>
           </Card.Body>
         </Card>
       </Container>

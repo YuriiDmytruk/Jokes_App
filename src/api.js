@@ -1,7 +1,7 @@
 const URL = 'https://api.api-ninjas.com/v1/dadjokes?limit=';
 const KEY = 'FZ/AKic+o4S4M8w6uUkbDA==m9YD4yHpLhWnTHuj';
 
-export const fetchJokes = async (jokes, setJokes, jokesAmount) => {
+export const fetchJokes = async (jokesLength, jokesAmount) => {
   try {
     const response = await fetch(URL + jokesAmount, {
       method: 'GET',
@@ -17,11 +17,11 @@ export const fetchJokes = async (jokes, setJokes, jokesAmount) => {
     data = data.map((e, i) => {
       return {
         joke: e.joke,
-        id: jokes.length + i,
+        id: jokesLength + i,
         category: getRandomCategory(),
       };
     });
-    setJokes(jokes.concat(data));
+    return data;
   } catch (error) {
     console.error('Error fetching data:', error);
   }

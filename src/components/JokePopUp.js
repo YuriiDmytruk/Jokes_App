@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import { useParams, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function JokePopUp() {
   const [show, setShow] = useState(false);
-
   const { id } = useParams();
   const location = useLocation();
+  const joke = useSelector((state) =>
+    state.jokes.find((e) => e.id === parseInt(id))
+  );
 
   useEffect(() => {
     if (id !== undefined) {
@@ -16,28 +20,21 @@ export default function JokePopUp() {
 
   const handleClose = () => {
     setShow(false);
-    window.history.go(-1);
   };
 
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>
-          {JOKE.category} ID = {id}
-        </Modal.Title>
+        <Modal.Title>{joke.category}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{JOKE.joke}</Modal.Body>
+      <Modal.Body>{joke.joke}</Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={handleClose}>
-          Close
-        </Button>
+        <Link to="/">
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Link>
       </Modal.Footer>
     </Modal>
   );
 }
-
-const JOKE = {
-  category: 'Dad Joke',
-  id: 0,
-  joke: 'My dad died because he couldn’t remember his blood type. He kept insisting we “be positive,” but it’s just so hard without him.',
-};

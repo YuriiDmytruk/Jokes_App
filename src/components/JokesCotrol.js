@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 
 const componentMergin = { marginTop: '20px' };
 
@@ -7,6 +8,7 @@ export default function JokesControl(props) {
   const [amount, setAmount] = useState(0);
   const [filter, setFilter] = useState(props.all);
   const [isValid, setValid] = useState(false);
+  const dispatch = useDispatch();
 
   const validateJokesAmountInput = (e) => {
     if (e.target.value.match(/^[0-9]+$/) != null) {
@@ -20,10 +22,14 @@ export default function JokesControl(props) {
     setValid(false);
   };
 
-  const changeAmount = () => {
+  const changeAmount = async () => {
+    const jokes = await props.fetchJokes(props.jokesLength, amount);
+    dispatch({
+      type: 'ADD_JOKES',
+      jokes: jokes,
+    });
     document.getElementById('inputAmount').value = '';
     setAmount(0);
-    props.fetchJokes(props.jokes, props.setJokes, amount);
   };
 
   const changeFilter = () => {
