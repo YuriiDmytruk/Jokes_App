@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
+import { ComponentMergin } from './styled/JokesControl';
 
-const componentMergin = { marginTop: '20px' };
+import { ADD_JOKES } from '../store/types';
 
 export default function JokesControl(props) {
   const [amount, setAmount] = useState(0);
@@ -26,7 +27,7 @@ export default function JokesControl(props) {
   const changeAmount = async () => {
     const jokes = await props.fetchJokes(props.jokesLength, amount);
     dispatch({
-      type: 'ADD_JOKES',
+      type: ADD_JOKES,
       jokes: jokes,
     });
     document.getElementById('inputAmount').value = '';
@@ -38,52 +39,54 @@ export default function JokesControl(props) {
   };
 
   return (
-    <Container style={componentMergin}>
-      <Row>
-        <Col>
-          <Row>
-            <Col>
-              <Form.Control
-                type="text"
-                id="inputAmount"
-                onChange={(e) => {
-                  validateJokesAmountInput(e);
-                }}
-              />
-              <Form.Text muted>
-                Enter number of jokes to add. Value must be 1-10
-              </Form.Text>
-            </Col>
-            <Col md="auto">
-              <Button disabled={!isValid} onClick={changeAmount}>
-                Add
-              </Button>
-            </Col>
-          </Row>
-        </Col>
-        <Col>
-          <Row>
-            <Col>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => {
-                  setFilter(e.target.value);
-                }}
-              >
-                {[props.all].concat(props.categories).map((e, i) => (
-                  <option key={i} value={e}>
-                    {e}
-                  </option>
-                ))}
-              </Form.Select>
-              <Form.Text muted>Choose joke category</Form.Text>
-            </Col>
-            <Col md="auto">
-              <Button onClick={changeFilter}>Filter</Button>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+    <ComponentMergin>
+      <Container>
+        <Row>
+          <Col>
+            <Row>
+              <Col>
+                <Form.Control
+                  type="text"
+                  id="inputAmount"
+                  onChange={(e) => {
+                    validateJokesAmountInput(e);
+                  }}
+                />
+                <Form.Text muted>
+                  Enter number of jokes to add. Value must be 1-10
+                </Form.Text>
+              </Col>
+              <Col md="auto">
+                <Button disabled={!isValid} onClick={changeAmount}>
+                  Add
+                </Button>
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <Form.Select
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    setFilter(e.target.value);
+                  }}
+                >
+                  {[props.all].concat(props.categories).map((e, i) => (
+                    <option key={i} value={e}>
+                      {e}
+                    </option>
+                  ))}
+                </Form.Select>
+                <Form.Text muted>Choose joke category</Form.Text>
+              </Col>
+              <Col md="auto">
+                <Button onClick={changeFilter}>Filter</Button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+    </ComponentMergin>
   );
 }
