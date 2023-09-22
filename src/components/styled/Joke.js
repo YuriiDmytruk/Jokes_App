@@ -6,6 +6,6 @@ export const CardSize = styled.div`
   margin: 10px auto;
 `;
 
-export const CardTextSize = styled.div`
+export const CardTextSize = styled.span`
   height: 3rem;
 `;
