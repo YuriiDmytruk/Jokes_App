@@ -33,6 +33,7 @@ export default function JokesControl(props) {
   };
 
   const changeFilter = () => {
+    props.setPage(1);
     props.setFilter(filter);
   };
 
