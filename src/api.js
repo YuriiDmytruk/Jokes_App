@@ -14,10 +14,10 @@ export const fetchJokes = async (jokesLength, jokesAmount) => {
     }
     let data = await response.json();
 
-    data = data.map((e, i) => {
+    data = data.map((dataJoke, index) => {
       return {
-        joke: e.joke,
-        id: jokesLength + i,
+        joke: dataJoke.joke,
+        id: jokesLength + index,
         category: getRandomCategory(),
       };
     });

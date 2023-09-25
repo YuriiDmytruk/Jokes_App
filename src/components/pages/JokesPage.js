@@ -26,8 +26,6 @@ export default function JokesPage(props) {
       page * JOKES_ON_PAGE + page - 1
     );
 
-  const getUniqueCategoris = () => [...new Set(jokes.map((e) => e.category))];
-
   return (
     <StyledJokesPage>
       <JokesControl

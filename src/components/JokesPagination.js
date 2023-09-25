@@ -4,8 +4,8 @@ import { Pagination } from 'react-bootstrap';
 import { Footer } from './styled/JokesPagination';
 
 export default function JokesPagination(props) {
-  const onPageChange = (i) => {
-    props.setPage(i);
+  const onPageChange = (page) => {
+    props.setPage(page);
   };
 
   const createPaginationItems = () => {
