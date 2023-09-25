@@ -1,11 +1,19 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, Container, Form, Col, Row } from 'react-bootstrap';
+import {
+  Button,
+  Container,
+  Form,
+  Col,
+  Row,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap';
 import { ComponentMergin } from '../styled/JokesControl';
 
 import { fetchJokes } from '../redux/ducks/jokes';
-import { validateJokesAmountInput } from '../utils'
+import { validateJokesAmountInput } from '../utils';
 
 type JokesControlProps = {
   jokesLength: number;
@@ -15,20 +23,20 @@ type JokesControlProps = {
   setFilter: (filter: string) => void;
 };
 
- const JokesControl = (props: JokesControlProps): JSX.Element => {
+const JokesControl = (props: JokesControlProps): JSX.Element => {
   const [amount, setAmount] = useState<string>('');
   const [filter, setFilter] = useState<string>(props.all);
   const [isValid, setValid] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-   const onChangeAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
-     if (validateJokesAmountInput(event)) {
-       setAmount(event.target.value);
-        setValid(true);
-        return;
-     }
-     setValid(false);
-  }
+  const onChangeAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (validateJokesAmountInput(event)) {
+      setAmount(event.target.value);
+      setValid(true);
+      return;
+    }
+    setValid(false);
+  };
 
   const changeAmount = (): void => {
     dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
@@ -36,9 +44,10 @@ type JokesControlProps = {
     setValid(false);
   };
 
-  const changeFilter = (): void => {
+  const changeFilter = (eventKey): void => {
+    setFilter(eventKey);
     props.setPage(1);
-    props.setFilter(filter);
+    props.setFilter(eventKey);
   };
 
   return (
@@ -69,23 +78,19 @@ type JokesControlProps = {
           </Col>
           <Col>
             <Row>
-              <Col>
-                <Form.Select
-                  aria-label="Default select example"
-                  onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
-                    setFilter(event.target.value);
-                  }}
+              <Col></Col>
+              <Col md="auto">
+                <DropdownButton
+                  key="Primary"
+                  onSelect={(eventKey) => changeFilter(eventKey)}
+                  title={filter}
                 >
                   {[props.all, ...props.categories].map((category, index) => (
-                    <option key={index} value={category}>
+                    <Dropdown.Item key={index} eventKey={category}>
                       {category}
-                    </option>
+                    </Dropdown.Item>
                   ))}
-                </Form.Select>
-                <Form.Text muted>Choose a joke category</Form.Text>
-              </Col>
-              <Col md="auto">
-                <Button onClick={changeFilter}>Filter</Button>
+                </DropdownButton>
               </Col>
             </Row>
           </Col>
@@ -93,6 +98,6 @@ type JokesControlProps = {
       </Container>
     </ComponentMergin>
   );
-}
+};
 
 export default JokesControl;

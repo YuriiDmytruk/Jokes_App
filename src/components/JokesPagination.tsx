@@ -11,6 +11,8 @@ type JokesPaginationProps = {
 };
 
 const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
+  const pages: number = Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1));
+
   const onPageChange = (page: number): void => {
     props.setPage(page);
   };
@@ -19,7 +21,7 @@ const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
     let paginationItems: JSX.Element[] = [];
     for (
       let page = 0;
-      page <= Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1));
+      page <= pages;
       page++
     ) {
       paginationItems.push(
@@ -41,7 +43,7 @@ const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
   const onNextClick = (): void => {
     if (
       props.page !==
-      Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1)) + 1
+      pages + 1
     ) {
       onPageChange(props.page + 1);
     }
@@ -54,20 +56,21 @@ const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
   };
 
   return (
+    
     <Footer>
-      <Pagination className="justify-content-center">
-        <Pagination.Prev disabled={props.page === 1} onClick={onPrevClick} />
-        {createPaginationItems()}
-        <Pagination.Next
-          disabled={
-            props.page ===
-            Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1)) + 1
-          }
-          onClick={onNextClick}
-        />
-      </Pagination>
+      {pages > 0 ?
+        <Pagination className="justify-content-center">
+          <Pagination.Prev disabled={props.page === 1} onClick={onPrevClick} />
+          {createPaginationItems()}
+          <Pagination.Next
+            disabled={
+              props.page === pages + 1}
+            onClick={onNextClick}
+          />
+        </Pagination>
+        : <></>}
     </Footer>
-  );
+);
 }
 
 export default JokesPagination;
