@@ -9,3 +9,11 @@ export const CardSize = styled.div`
 export const CardTextSize = styled.span`
   height: 3rem;
 `;
+
+export const CenterButton = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

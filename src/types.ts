@@ -13,10 +13,15 @@ export type JokesActionAdd = {
   jokes?: Joke[],
 };
 
+export type JokeDelete = {
+  type: string,
+  id: number,
+}
+
 export type JokesActionFetch = {
   type: string,
   props: {
-      jokesLength: number,
+      jokesLastID: number,
       jokesAmount: number,
     }
 };

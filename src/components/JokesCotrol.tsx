@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import {
   Button,
   Container,
@@ -20,6 +21,7 @@ type JokesControlProps = {
   jokesLength: number;
   all: string;
   categories: string[];
+  jokesLastID: number;
   setPage: (page: number) => void;
   setFilter: (filter: string) => void;
 };
@@ -46,7 +48,7 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
 
   const changeAmount = (): void => {
     setLoading(true);
-    dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
+    dispatch(fetchJokes(props.jokesLastID, parseInt(amount)));
     setAmount('');
     setValid(false);
   };
