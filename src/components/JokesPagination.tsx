@@ -1,15 +1,22 @@
-import React from 'react';
-import { Pagination } from 'react-bootstrap';
+import * as React from 'react';
 
+import { Pagination } from 'react-bootstrap';
 import { Footer } from './styled/JokesPagination';
 
-export default function JokesPagination(props) {
-  const onPageChange = (page) => {
+type JokesPaginationProps = {
+  setPage: (page: number) => void;
+  jokesLength: number;
+  JOKES_ON_PAGE: number;
+  page: number;
+};
+
+export default function JokesPagination(props: JokesPaginationProps): JSX.Element  {
+  const onPageChange = (page: number): void => {
     props.setPage(page);
   };
 
-  const createPaginationItems = () => {
-    let paginationItems = [];
+  const createPaginationItems = (): JSX.Element[] => {
+    let paginationItems: JSX.Element[] = [];
     for (
       let page = 0;
       page <= Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1));
@@ -31,7 +38,7 @@ export default function JokesPagination(props) {
     return paginationItems;
   };
 
-  const onNextClick = () => {
+  const onNextClick = (): void => {
     if (
       props.page !==
       Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1)) + 1
@@ -40,7 +47,7 @@ export default function JokesPagination(props) {
     }
   };
 
-  const onPrevClick = () => {
+  const onPrevClick = (): void => {
     if (props.page !== 1) {
       onPageChange(props.page - 1);
     }

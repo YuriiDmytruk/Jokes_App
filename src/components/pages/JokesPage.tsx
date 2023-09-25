@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { JokesList, JokesControl, JokesPagination } from '../index';
 import { StyledJokesPage } from '../styled/JokesPage';
 
-import { fetchJokes } from '../../api';
+import { Joke } from '../../types';
 
 const ALL = 'ALL';
 const JOKES_ON_PAGE = 12;
 
-export default function JokesPage(props) {
-  const [filter, setFilter] = useState(ALL);
-  const [page, setPage] = useState(1);
-  const jokes = useSelector((state) => state.jokes);
+export default function JokesPage(): JSX.Element {
+  const [filter, setFilter] = useState<string>(ALL);
+  const [page, setPage] = useState<number>(1);
+  const jokes: Joke[] = useSelector((state: any) => state.jokes);
 
-  const filterJokes = () =>
-    filter === ALL ? jokes : jokes.filter((joke) => joke.category === filter);
+  const filterJokes = (): Joke[] =>
+    filter === ALL ? jokes : jokes.filter((joke: Joke) => joke.category === filter);
 
-  const getUniqueCategoris = () => [
-    ...new Set(jokes.map((joke) => joke.category)),
+  const getUniqueCategories = (): string[] => [
+    ...new Set(jokes.map((joke: Joke) => joke.category)),
   ];
-  const pageJokes = (filteredJokes) =>
+
+  const pageJokes = (filteredJokes: Joke[]): Joke[] =>
     filteredJokes.slice(
       (page - 1) * (JOKES_ON_PAGE + 1),
       page * JOKES_ON_PAGE + page - 1
@@ -29,17 +31,16 @@ export default function JokesPage(props) {
   return (
     <StyledJokesPage>
       <JokesControl
-        fetchJokes={fetchJokes}
         jokesLength={jokes.length}
         setFilter={setFilter}
-        categories={getUniqueCategoris()}
+        categories={getUniqueCategories()}
         all={ALL}
         setPage={setPage}
       />
       <JokesList jokes={pageJokes(filterJokes())} />
       <JokesPagination
         page={page}
-        jokesLength={filterJokes(jokes).length}
+        jokesLength={filterJokes().length}
         setPage={setPage}
         JOKES_ON_PAGE={JOKES_ON_PAGE}
       />
