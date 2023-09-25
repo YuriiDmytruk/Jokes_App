@@ -44,9 +44,9 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
     setValid(false);
   };
 
-  const changeAmount = async (): Promise<void> => {
+  const changeAmount = (): void => {
     setLoading(true);
-    await dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
+    dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
     setAmount('');
     setValid(false);
   };
