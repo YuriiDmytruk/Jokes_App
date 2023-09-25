@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   Button,
@@ -9,8 +9,9 @@ import {
   Row,
   Dropdown,
   DropdownButton,
+  Spinner,
 } from 'react-bootstrap';
-import { ComponentMergin } from '../styled/JokesControl';
+import { ComponentMergin, LoaderConteiner } from '../styled/JokesControl';
 
 import { fetchJokes } from '../redux/ducks/jokes';
 import { validateJokesAmountInput } from '../utils';
@@ -27,7 +28,12 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
   const [amount, setAmount] = useState<string>('');
   const [filter, setFilter] = useState<string>(props.all);
   const [isValid, setValid] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setLoading(false);
+  }, [props.jokesLength]);
 
   const onChangeAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (validateJokesAmountInput(event)) {
@@ -38,8 +44,9 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
     setValid(false);
   };
 
-  const changeAmount = (): void => {
-    dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
+  const changeAmount = async (): Promise<void> => {
+    setLoading(true);
+    await dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
     setAmount('');
     setValid(false);
   };
@@ -78,7 +85,15 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
           </Col>
           <Col>
             <Row>
-              <Col></Col>
+              <Col>
+                <LoaderConteiner>
+                  {loading ? (
+                    <Spinner animation="border" variant="primary" />
+                  ) : (
+                    <></>
+                  )}
+                </LoaderConteiner>
+              </Col>
               <Col md="auto">
                 <DropdownButton
                   key="Primary"
