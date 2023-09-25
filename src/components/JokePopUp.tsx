@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Modal, Button } from 'react-bootstrap';
 
-export default function JokePopUp() {
-  const [show, setShow] = useState(false);
-  const { id } = useParams();
+import { Joke } from '../types';
+
+
+const JokePopUp = (): JSX.Element => {
+  const [show, setShow] = useState<boolean>(false);
+  const { id } = useParams<{ id: string }>();
   const location = useLocation();
-  const joke = useSelector((state) =>
-    state.jokes.find((joke) => joke.id === parseInt(id))
+  const joke: Joke | undefined = useSelector((state: any) =>
+    state.jokes.find((joke: Joke) => joke.id === parseInt(id))
   );
   const navigate = useNavigate();
 
@@ -19,7 +23,7 @@ export default function JokePopUp() {
     }
   }, [location, id]);
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setShow(false);
     navigate('/');
   };
@@ -27,9 +31,9 @@ export default function JokePopUp() {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>{joke.category}</Modal.Title>
+        <Modal.Title>{joke?.category}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{joke.joke}</Modal.Body>
+      <Modal.Body>{joke?.joke}</Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={handleClose}>
           Close
@@ -38,3 +42,5 @@ export default function JokePopUp() {
     </Modal>
   );
 }
+
+export default JokePopUp;
