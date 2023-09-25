@@ -12,9 +12,11 @@ export default function JokesPage(props) {
   const jokes = useSelector((state) => state.jokes);
 
   const filterJokes = () =>
-    filter === ALL ? jokes : jokes.filter((e) => e.category === filter);
+    filter === ALL ? jokes : jokes.filter((joke) => joke.category === filter);
 
-  const getUniqueCategoris = () => [...new Set(jokes.map((e) => e.category))];
+  const getUniqueCategoris = () => [
+    ...new Set(jokes.map((joke) => joke.category)),
+  ];
 
   return (
     <>

@@ -12,9 +12,9 @@ export default function JokesControl(props) {
   const [isValid, setValid] = useState(false);
   const dispatch = useDispatch();
 
-  const validateJokesAmountInput = (e) => {
-    if (e.target.value.match(/^[0-9]+$/) != null) {
-      const number = parseInt(e.target.value);
+  const validateJokesAmountInput = (event) => {
+    if (event.target.value.match(/^[0-9]+$/) != null) {
+      const number = parseInt(event.target.value);
       if (number >= 1 && number <= 10) {
         setAmount(number);
         setValid(true);
@@ -48,8 +48,8 @@ export default function JokesControl(props) {
                 <Form.Control
                   type="text"
                   id="inputAmount"
-                  onChange={(e) => {
-                    validateJokesAmountInput(e);
+                  onChange={(event) => {
+                    validateJokesAmountInput(event);
                   }}
                 />
                 <Form.Text muted>
@@ -68,15 +68,17 @@ export default function JokesControl(props) {
               <Col>
                 <Form.Select
                   aria-label="Default select example"
-                  onChange={(e) => {
-                    setFilter(e.target.value);
+                  onChange={(event) => {
+                    setFilter(event.target.value);
                   }}
                 >
-                  {[props.all].concat(props.categories).map((e, i) => (
-                    <option key={i} value={e}>
-                      {e}
-                    </option>
-                  ))}
+                  {[props.all]
+                    .concat(props.categories)
+                    .map((category, index) => (
+                      <option key={index} value={category}>
+                        {category}
+                      </option>
+                    ))}
                 </Form.Select>
                 <Form.Text muted>Choose joke category</Form.Text>
               </Col>

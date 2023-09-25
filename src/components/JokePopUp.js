@@ -9,7 +9,7 @@ export default function JokePopUp() {
   const { id } = useParams();
   const location = useLocation();
   const joke = useSelector((state) =>
-    state.jokes.find((e) => e.id === parseInt(id))
+    state.jokes.find((joke) => joke.id === parseInt(id))
   );
 
   useEffect(() => {

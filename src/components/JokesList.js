@@ -6,8 +6,8 @@ import { Joke } from './index';
 const JokesList = (props) => (
   <Container>
     <Row>
-      {props.jokes.map((e) => (
-        <Joke key={e.id} joke={e} />
+      {props.jokes.map((joke) => (
+        <Joke key={joke.id} joke={joke} />
       ))}
     </Row>
   </Container>
