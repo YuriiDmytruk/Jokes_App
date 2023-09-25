@@ -2,9 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Container, Form, Col, Row } from 'react-bootstrap';
-import { ComponentMergin } from './styled/JokesControl';
+import { ComponentMergin } from '../styled/JokesControl';
 
-import { fetchJokes } from '../redux-saga/jokesReducer';
+import { fetchJokes } from '../redux/ducks/jokes';
+import { validateJokesAmountInput } from '../utils'
 
 type JokesControlProps = {
   jokesLength: number;
@@ -14,23 +15,20 @@ type JokesControlProps = {
   setFilter: (filter: string) => void;
 };
 
-export default function JokesControl(props: JokesControlProps): JSX.Element  {
+ const JokesControl = (props: JokesControlProps): JSX.Element => {
   const [amount, setAmount] = useState<string>('');
   const [filter, setFilter] = useState<string>(props.all);
   const [isValid, setValid] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  const validateJokesAmountInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.value.match(/^[0-9]+$/) != null) {
-      const amount: number = parseInt(event.target.value);
-      if (amount >= 1 && amount <= 10) {
-        setAmount(amount.toString());
+   const onChangeAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
+     if (validateJokesAmountInput(event)) {
+       setAmount(event.target.value);
         setValid(true);
         return;
-      }
-    }
-    setValid(false);
-  };
+     }
+     setValid(false);
+  }
 
   const changeAmount = (): void => {
     dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
@@ -55,7 +53,7 @@ export default function JokesControl(props: JokesControlProps): JSX.Element  {
                   id="inputAmount"
                   value={amount}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    validateJokesAmountInput(event);
+                    onChangeAmount(event);
                   }}
                 />
                 <Form.Text muted>
@@ -96,3 +94,5 @@ export default function JokesControl(props: JokesControlProps): JSX.Element  {
     </ComponentMergin>
   );
 }
+
+export default JokesControl;

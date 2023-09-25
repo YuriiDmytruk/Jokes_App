@@ -1,8 +1,7 @@
 import { createStore, applyMiddleware, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware, { Task } from 'redux-saga';
-import { jokesWatcher } from './jokesSaga';
-import { jokesReducer } from './jokesReducer';
+import { jokesWatcher, jokesReducer } from './ducks/jokes';
 
 import { JokesState } from '../types';
 

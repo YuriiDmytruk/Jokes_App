@@ -8,7 +8,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { Joke } from '../types';
 
 
-export default function JokePopUp(): JSX.Element  {
+const JokePopUp = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
@@ -42,3 +42,5 @@ export default function JokePopUp(): JSX.Element  {
     </Modal>
   );
 }
+
+export default JokePopUp;

@@ -4,7 +4,7 @@ import JokesControl from './JokesCotrol';
 import JokesList from './JokesList';
 import NavBar from './NavBar';
 import JokePopUp from './JokePopUp';
-import JokesPage from './pages/JokesPage';
+import JokesPage from '../pages/JokesPage';
 import JokesPagination from './JokesPagination';
 
 export {

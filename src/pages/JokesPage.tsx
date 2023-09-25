@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { JokesList, JokesControl, JokesPagination } from '../index';
+import { JokesList, JokesControl, JokesPagination } from '../components/index';
 import { StyledJokesPage } from '../styled/JokesPage';
 
-import { Joke } from '../../types';
+import { Joke } from '../types';
 
 const ALL = 'ALL';
 const JOKES_ON_PAGE = 12;

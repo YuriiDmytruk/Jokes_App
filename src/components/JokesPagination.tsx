@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Pagination } from 'react-bootstrap';
-import { Footer } from './styled/JokesPagination';
+import { Footer } from '../styled/JokesPagination';
 
 type JokesPaginationProps = {
   setPage: (page: number) => void;
@@ -10,7 +10,7 @@ type JokesPaginationProps = {
   page: number;
 };
 
-export default function JokesPagination(props: JokesPaginationProps): JSX.Element  {
+const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
   const onPageChange = (page: number): void => {
     props.setPage(page);
   };
@@ -69,3 +69,5 @@ export default function JokesPagination(props: JokesPaginationProps): JSX.Elemen
     </Footer>
   );
 }
+
+export default JokesPagination;

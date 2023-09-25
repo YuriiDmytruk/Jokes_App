@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Col, Container } from 'react-bootstrap';
-import { CardSize, CardTextSize } from './styled/Joke';
+import { CardSize, CardTextSize } from '../styled/Joke';
 
 import {Joke as JokeType} from '../types'
 
