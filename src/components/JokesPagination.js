@@ -11,20 +11,20 @@ export default function JokesPagination(props) {
   const createPaginationItems = () => {
     let paginationItems = [];
     for (
-      let i = 0;
-      i <= Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1));
-      i++
+      let page = 0;
+      page <= Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1));
+      page++
     ) {
       paginationItems.push(
         <Pagination.Item
           onClick={() => {
-            onPageChange(i + 1);
+            onPageChange(page + 1);
           }}
-          value={i + 1}
-          active={props.page === i + 1}
-          key={i + 1}
+          value={page + 1}
+          active={props.page === page + 1}
+          key={page + 1}
         >
-          {i + 1}
+          {page + 1}
         </Pagination.Item>
       );
     }
