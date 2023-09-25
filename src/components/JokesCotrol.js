@@ -7,7 +7,7 @@ import { ComponentMergin } from './styled/JokesControl';
 import { fetchJokes } from '../redux-saga/jokesReducer';
 
 export default function JokesControl(props) {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [filter, setFilter] = useState(props.all);
   const [isValid, setValid] = useState(false);
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export default function JokesControl(props) {
   };
 
   const changeAmount = async () => {
-    dispatch(fetchJokes(props.jokesLength, amount));
+    dispatch(fetchJokes(props.jokesLength, parseInt(amount)));
     setAmount('');
     setValid(false);
   };

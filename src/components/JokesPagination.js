@@ -49,10 +49,10 @@ export default function JokesPagination(props) {
   return (
     <Footer>
       <Pagination className="justify-content-center">
-        <Pagination.Prev disable={props.page === 1} onClick={onPrevClick} />
+        <Pagination.Prev disabled={props.page === 1} onClick={onPrevClick} />
         {createPaginationItems()}
         <Pagination.Next
-          disable={
+          disabled={
             props.page ===
             Math.floor(props.jokesLength / (props.JOKES_ON_PAGE + 1)) + 1
           }
