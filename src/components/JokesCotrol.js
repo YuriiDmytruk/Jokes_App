@@ -26,8 +26,6 @@ export default function JokesControl(props) {
 
   const changeAmount = async () => {
     dispatch(fetchJokes(props.jokesLength, amount));
-
-    document.getElementById('inputAmount').value = '';
     setAmount('');
     setValid(false);
   };
@@ -47,6 +45,7 @@ export default function JokesControl(props) {
                 <Form.Control
                   type="text"
                   id="inputAmount"
+                  value={amount}
                   onChange={(event) => {
                     validateJokesAmountInput(event);
                   }}
