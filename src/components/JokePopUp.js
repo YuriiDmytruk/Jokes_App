@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Modal, Button } from 'react-bootstrap';
@@ -11,6 +11,7 @@ export default function JokePopUp() {
   const joke = useSelector((state) =>
     state.jokes.find((joke) => joke.id === parseInt(id))
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id !== undefined) {
@@ -20,6 +21,7 @@ export default function JokePopUp() {
 
   const handleClose = () => {
     setShow(false);
+    navigate('/');
   };
 
   return (
@@ -29,11 +31,9 @@ export default function JokePopUp() {
       </Modal.Header>
       <Modal.Body>{joke.joke}</Modal.Body>
       <Modal.Footer>
-        <Link to="/">
-          <Button variant="primary" onClick={handleClose}>
-            Close
-          </Button>
-        </Link>
+        <Button variant="primary" onClick={handleClose}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

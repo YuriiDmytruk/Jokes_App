@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Navbar, Container } from 'react-bootstrap';
 
 const NavBar = () => (
   <Navbar expand="lg" className="bg-body-tertiary">
     <Container>
-      <Navbar.Brand href="/">Jokes</Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand>Jokes</Navbar.Brand>
+      </Link>
     </Container>
   </Navbar>
 );
