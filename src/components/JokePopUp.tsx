@@ -4,15 +4,15 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Modal, Button } from 'react-bootstrap';
+import { JokesState } from '../types';
 
 import { Joke } from '../types';
-
 
 const JokePopUp = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
-  const joke: Joke | undefined = useSelector((state: any) =>
+  const joke: Joke | undefined = useSelector((state: JokesState) =>
     state.jokes.find((joke: Joke) => joke.id === parseInt(id))
   );
   const navigate = useNavigate();
@@ -41,6 +41,6 @@ const JokePopUp = (): JSX.Element => {
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
 export default JokePopUp;
