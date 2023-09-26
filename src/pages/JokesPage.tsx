@@ -30,14 +30,14 @@ export default function JokesPage(): JSX.Element {
     ...new Set(jokes.map((joke: Joke) => joke.category)),
   ];
 
-  const pageJokes = (filteredJokes: Joke[]): Joke[] =>
-    filteredJokes.slice(
-      (page - 1) * (JOKES_ON_PAGE + 1),
-      page * JOKES_ON_PAGE + page - 1
-    );
-
-  console.log(jokes);
-  console.log(Math.max(...jokes.map((joke) => joke.id)));
+  const pageJokes = (filteredJokes: Joke[]): Joke[] => {
+    const dividedArrays = [];
+    for (let i = 0; i < filteredJokes.length; i += JOKES_ON_PAGE) {
+      const chunk = filteredJokes.slice(i, i + JOKES_ON_PAGE);
+      dividedArrays.push(chunk);
+    }
+    return dividedArrays[page - 1];
+  };
 
   return (
     <StyledJokesPage>

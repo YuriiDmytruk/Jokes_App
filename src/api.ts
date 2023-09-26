@@ -22,7 +22,6 @@ export const fetchJokes = async (
       throw new Error('Network response was not ok');
     }
     const data: JokeData[] = await response.json();
-    console.log('From api = ' + jokesLastID)
     const jokes: Joke[] = data.map((dataJoke, index) => ({
       joke: dataJoke.joke,
       id: jokesLastID + index,
