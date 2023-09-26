@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Container, Row } from 'react-bootstrap';
-
-import { Joke as JokeType } from '../types';
 import { Joke } from './index';
+import { Joke as JokeType } from '../types';
 
 type JokesListProps = {
   jokes: JokeType[];

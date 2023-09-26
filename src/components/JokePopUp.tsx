@@ -2,11 +2,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import { Modal, Button } from 'react-bootstrap';
-import { JokesState } from '../types';
-
-import { Joke } from '../types';
+import { JokesState, Joke } from '../types';
 
 const JokePopUp = (): JSX.Element => {
   const [show, setShow] = useState<boolean>(false);

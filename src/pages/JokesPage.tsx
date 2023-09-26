@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
-import { JokesList, JokesControl, JokesPagination } from '../components/index';
+import { JokesControl, JokesList, JokesPagination } from '../components/index';
 import { StyledJokesPage } from '../styled/JokesPage';
-
 import { JOKES } from '../redux/ducks/jokes';
-
 import { Joke } from '../types';
 
 const ALL = 'ALL';

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { fetchJokes } from '../redux/ducks/jokes';
+import { validateJokesAmountInput } from '../utils';
+import { ComponentMergin, LoaderConteiner } from '../styled/JokesControl';
 import {
   Button,
   Container,
@@ -12,10 +14,6 @@ import {
   DropdownButton,
   Spinner,
 } from 'react-bootstrap';
-import { ComponentMergin, LoaderConteiner } from '../styled/JokesControl';
-
-import { fetchJokes } from '../redux/ducks/jokes';
-import { validateJokesAmountInput } from '../utils';
 
 type JokesControlProps = {
   jokesLength: number;

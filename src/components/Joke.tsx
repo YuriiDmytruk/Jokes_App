@@ -2,10 +2,8 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { CardSize, CardTextSize, CenterButton } from '../styled/Joke';
-
 import { useDispatch } from 'react-redux';
 import { deleteJoke } from '../redux/ducks/jokes';
-
 import { Joke as JokeType } from '../types';
 
 type JokeProps = {
