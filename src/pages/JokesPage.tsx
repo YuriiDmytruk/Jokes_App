@@ -23,9 +23,8 @@ export default function JokesPage(): JSX.Element {
       ? jokes
       : jokes.filter((joke: Joke) => joke.category === filter);
 
-  const getUniqueCategories = (): string[] => [
-    ...new Set(jokes.map((joke: Joke) => joke.category)),
-  ];
+  const getUniqueCategories = (): string[] =>
+    Array.from(new Set(jokes.map((joke: Joke) => joke.category)));
 
   const pageJokes = (filteredJokes: Joke[]): Joke[] => {
     const dividedArrays = [];

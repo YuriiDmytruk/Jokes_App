@@ -11,7 +11,7 @@ const DELETE_JOKE = 'DELETE_JOKE'
 export const JOKES = 'JOKES'
 
 const defaultState: JokesState = {
-  jokes: JSON.parse(localStorage.getItem(JOKES))
+  jokes: JSON.parse(localStorage.getItem(JOKES)!)
 };
 
 export const jokesReducer = (
@@ -56,7 +56,7 @@ export const fetchJokes = (
 }
 
 function* fetchJokesWorker(action: JokesActionFetch) {
-  const data = yield call(
+  const data: Joke[] = yield call(
     fetchJokesFromApi,
     action.props.jokesLastID,
     action.props.jokesAmount

@@ -51,10 +51,12 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
     setValid(false);
   };
 
-  const changeFilter = (eventKey): void => {
-    setFilter(eventKey);
-    props.setPage(1);
-    props.setFilter(eventKey);
+  const changeFilter = (eventKey: string | null): void => {
+    if (eventKey !== null) {
+      setFilter(eventKey);
+      props.setPage(1);
+      props.setFilter(eventKey);
+    }
   };
 
   return (

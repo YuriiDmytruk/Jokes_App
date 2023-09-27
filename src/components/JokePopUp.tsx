@@ -10,7 +10,7 @@ const JokePopUp = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
   const joke: Joke | undefined = useSelector((state: JokesState) =>
-    state.jokes.find((joke: Joke) => joke.id === parseInt(id))
+    state.jokes.find((joke: Joke) => joke.id === parseInt(id!))
   );
   const navigate = useNavigate();
 
