@@ -1,9 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
-import Hello from '../../components/Hello'; // Import your component
+import { MemoryRouter } from 'react-router-dom';
+import NavBar from '../../components/NavBar';
 
-// This will automatically generate and update snapshots
 test('renders NavBar correctly', () => {
-  const { asFragment } = render(<Hello />);
+  const { asFragment } = render(
+    <MemoryRouter>
+      <NavBar />
+    </MemoryRouter>
+  );
   expect(asFragment()).toMatchSnapshot();
 });
