@@ -32,7 +32,14 @@ export default function JokesPage(): JSX.Element {
       const chunk = filteredJokes.slice(i, i + JOKES_ON_PAGE);
       dividedArrays.push(chunk);
     }
-    return dividedArrays[page - 1];
+    debugger;
+    if (!dividedArrays[page - 1]) {
+      if (page !== 1) {
+        setPage(page - 1);
+        return [];
+      }
+    }
+    return dividedArrays[page - 1] || [];
   };
 
   return (

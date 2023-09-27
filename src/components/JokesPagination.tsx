@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Pagination } from 'react-bootstrap';
 import { Footer } from '../styled/JokesPagination';
 
