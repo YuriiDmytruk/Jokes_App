@@ -1,4 +1,4 @@
-import {Joke} from './types'
+import { Joke } from './types'
 
 const URL = 'https://api.api-ninjas.com/v1/dadjokes?limit=';
 const KEY = 'FZ/AKic+o4S4M8w6uUkbDA==m9YD4yHpLhWnTHuj';
@@ -21,7 +21,7 @@ export const fetchJokes = async (
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data: JokeData[] = await response.json();
+    const data: JokeData[] = await response.json() as JokeData[];
     const jokes: Joke[] = data.map((dataJoke, index) => ({
       joke: dataJoke.joke,
       id: jokesLastID + index,
@@ -35,5 +35,5 @@ export const fetchJokes = async (
 };
 
 const categories = ['Programming', 'Dad Joke', 'Animals', 'Car Joke'];
-const getRandomCategory = (): string =>
+export const getRandomCategory = (): string =>
   categories[Math.floor(Math.random() * categories.length)];

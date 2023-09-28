@@ -28,7 +28,7 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
   }, [props.jokesLength]);
 
   const onChangeAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (validateJokesAmountInput(event)) {
+    if (validateJokesAmountInput(event.target.value)) {
       setAmount(event.target.value);
       setValid(true);
       return;
