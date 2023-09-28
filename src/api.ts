@@ -1,6 +1,6 @@
 import { Joke } from './types'
 
-const URL = 'https://api.api-ninjas.com/v1/dadjokes?limit=';
+export const URL = 'https://api.api-ninjas.com/v1/dadjokes?limit=';
 const KEY = 'FZ/AKic+o4S4M8w6uUkbDA==m9YD4yHpLhWnTHuj';
 
 type JokeData = {

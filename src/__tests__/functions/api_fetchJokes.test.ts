@@ -1,4 +1,4 @@
-import { fetchJokes } from '../../api'; // Replace with the actual path to your module
+import { fetchJokes } from '../../api';
 import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();

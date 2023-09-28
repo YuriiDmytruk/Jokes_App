@@ -1,12 +1,13 @@
 import { Joke, JokesState, JokesActionFetch, JokesActionAdd, JokeDelete } from '../../types'
 import { put, takeEvery, call } from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
 
 import { fetchJokes as fetchJokesFromApi } from '../../api';
 
-const ADD_JOKES = 'ADD_JOKES';
-const FETCH_JOKES = 'FETCH_JOKES';
-const SET_JOKES = 'SET_JOKES';
-const DELETE_JOKE = 'DELETE_JOKE'
+export const ADD_JOKES = 'ADD_JOKES';
+export const FETCH_JOKES = 'FETCH_JOKES';
+export const SET_JOKES = 'SET_JOKES';
+export const DELETE_JOKE = 'DELETE_JOKE'
 
 export const JOKES = 'JOKES'
 
@@ -55,7 +56,7 @@ export const fetchJokes = (
   };
 }
 
-function* fetchJokesWorker(action: JokesActionFetch) {
+export function* fetchJokesWorker(action: JokesActionFetch): SagaIterator {
   const data: Joke[] = yield call(
     fetchJokesFromApi,
     action.props.jokesLastID,
