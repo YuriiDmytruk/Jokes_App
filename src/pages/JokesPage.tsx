@@ -32,7 +32,6 @@ const JokesPage = (): JSX.Element => {
       const chunk = filteredJokes.slice(i, i + JOKES_ON_PAGE);
       dividedArrays.push(chunk);
     }
-    debugger;
     if (!dividedArrays[page - 1]) {
       if (page !== 1) {
         setPage(page - 1);

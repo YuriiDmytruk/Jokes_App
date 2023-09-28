@@ -17,9 +17,10 @@ import {
 import { JokesControlProps } from '../types';
 
 const JokesControl = (props: JokesControlProps): JSX.Element => {
+  debugger;
   const [amount, setAmount] = useState<string>('');
   const [filter, setFilter] = useState<string>(props.all);
-  const [isValid, setValid] = useState<boolean>(false);
+  const [isValid, setValid] = useState<boolean>(amount !== '');
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
 
@@ -27,9 +28,9 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
     setLoading(false);
   }, [props.jokesLength]);
 
-  const onChangeAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (validateJokesAmountInput(event.target.value)) {
-      setAmount(event.target.value);
+  const onChangeAmount = (value: string): void => {
+    setAmount(value);
+    if (validateJokesAmountInput(value)) {
       setValid(true);
       return;
     }
@@ -63,7 +64,7 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
                   id="inputAmount"
                   value={amount}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    onChangeAmount(event);
+                    onChangeAmount(event.target.value);
                   }}
                 />
                 <Form.Text muted>
