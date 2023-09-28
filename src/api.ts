@@ -29,7 +29,6 @@ export const fetchJokes = async (
     }));
     return jokes;
   } catch (error) {
-    console.error('Error fetching data:', error);
     return [];
   }
 };
