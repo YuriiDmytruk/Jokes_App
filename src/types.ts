@@ -25,3 +25,19 @@ export type JokesActionFetch = {
       jokesAmount: number,
     }
 };
+
+export type JokesControlProps = {
+  jokesLength: number;
+  all: string;
+  categories: string[];
+  jokesLastID: number;
+  setPage: (page: number) => void;
+  setFilter: (filter: string) => void;
+};
+
+export type JokesPaginationProps = {
+  setPage: (page: number) => void;
+  jokesLength: number;
+  JOKES_ON_PAGE: number;
+  page: number;
+};

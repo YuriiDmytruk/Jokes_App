@@ -9,7 +9,7 @@ import { Joke } from '../types';
 const ALL = 'ALL';
 const JOKES_ON_PAGE = 12;
 
-export default function JokesPage(): JSX.Element {
+const JokesPage = (): JSX.Element => {
   const [filter, setFilter] = useState<string>(ALL);
   const [page, setPage] = useState<number>(1);
   const jokes: Joke[] = useSelector((state: any) => state.jokes);
@@ -63,4 +63,6 @@ export default function JokesPage(): JSX.Element {
       />
     </StyledJokesPage>
   );
-}
+};
+
+export default JokesPage;

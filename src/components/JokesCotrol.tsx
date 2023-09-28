@@ -14,15 +14,7 @@ import {
   DropdownButton,
   Spinner,
 } from 'react-bootstrap';
-
-type JokesControlProps = {
-  jokesLength: number;
-  all: string;
-  categories: string[];
-  jokesLastID: number;
-  setPage: (page: number) => void;
-  setFilter: (filter: string) => void;
-};
+import { JokesControlProps } from '../types';
 
 const JokesControl = (props: JokesControlProps): JSX.Element => {
   const [amount, setAmount] = useState<string>('');
