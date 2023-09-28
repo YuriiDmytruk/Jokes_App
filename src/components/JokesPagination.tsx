@@ -1,13 +1,7 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { Pagination } from 'react-bootstrap';
 import { Footer } from '../styled/JokesPagination';
-
-type JokesPaginationProps = {
-  setPage: (page: number) => void;
-  jokesLength: number;
-  JOKES_ON_PAGE: number;
-  page: number;
-};
+import { JokesPaginationProps } from '../types';
 
 const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
   const pages: number = Math.floor(

@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders JokesPage correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gLLuHO kJnNzi"
+  >
+    <div
+      class="sc-hLQTFJ RsoUG"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col"
+              >
+                <input
+                  class="form-control"
+                  id="inputAmount"
+                  type="text"
+                  value=""
+                />
+                <small
+                  class="form-text text-muted"
+                >
+                  Enter the number of jokes to add. Value must be 1-10.
+                </small>
+              </div>
+              <div
+                class="col-md-auto"
+              >
+                <button
+                  class="btn btn-primary"
+                  disabled=""
+                  type="button"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col"
+              >
+                <div
+                  class="sc-eDLKEg gdFpvh"
+                />
+              </div>
+              <div
+                class="col-md-auto"
+              >
+                <div
+                  class="dropdown"
+                >
+                  <button
+                    aria-expanded="false"
+                    class="dropdown-toggle btn btn-primary"
+                    type="button"
+                  >
+                    ALL
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      />
+    </div>
+    <div
+      class="sc-jTQDJr BYQbN"
+    />
+  </div>
+</DocumentFragment>
+`;
