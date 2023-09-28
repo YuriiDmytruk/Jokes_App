@@ -7,10 +7,7 @@ import { jokesReducer } from '../../redux/ducks/jokes';
 import JokePopUp from '../../components/JokePopUp';
 
 test('renders JokePopUp correctly', () => {
-  const store = createStore(
-    jokesReducer, // Provide your actual Redux root reducer
-    { jokes: [] } // Initialize with the desired initial state
-  );
+  const store = createStore(jokesReducer, { jokes: [] });
 
   const { asFragment } = render(
     <Provider store={store}>

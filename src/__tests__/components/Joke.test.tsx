@@ -9,8 +9,8 @@ import { Joke as JokeType } from '../../types';
 
 test('renders Joke correctly', () => {
   const store = createStore(
-    jokesReducer, // Provide your actual Redux root reducer
-    { jokes: [] } // Initialize with the desired initial state
+    jokesReducer,
+    { jokes: [] }
   );
 
   const joke: JokeType = {

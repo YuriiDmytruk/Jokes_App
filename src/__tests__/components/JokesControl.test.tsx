@@ -9,8 +9,8 @@ import { JokesControlProps } from '../../types';
 
 test('renders JokesControl correctly', () => {
   const store = createStore(
-    jokesReducer, // Provide your actual Redux root reducer
-    { jokes: [] } // Initialize with the desired initial state
+    jokesReducer,
+    { jokes: [] }
   );
 
   const props: JokesControlProps = {
