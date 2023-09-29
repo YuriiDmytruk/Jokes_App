@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import { jokesReducer } from '../../redux/ducks/jokes';
 import JokesPage from '../../pages/JokesPage';
 
-test('renders JokesPage correctly', () => {
+test('should render JokesPage component and match snapshot', () => {
   const store = createStore(jokesReducer, { jokes: [] });
 
   const { asFragment } = render(

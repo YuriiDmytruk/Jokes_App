@@ -7,7 +7,7 @@ import { jokesReducer } from '../../redux/ducks/jokes';
 import JokesPagination from '../../components/JokesPagination';
 import { JokesPaginationProps } from '../../types';
 
-test('renders JokesList correctly', () => {
+test('should render JokesList component and match snapshot', () => {
   const store = createStore(jokesReducer, { jokes: [] });
 
   const props: JokesPaginationProps = {

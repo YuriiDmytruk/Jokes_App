@@ -7,11 +7,8 @@ import { jokesReducer } from '../../redux/ducks/jokes';
 import JokesControl from '../../components/JokesCotrol';
 import { JokesControlProps } from '../../types';
 
-test('renders JokesControl correctly', () => {
-  const store = createStore(
-    jokesReducer,
-    { jokes: [] }
-  );
+test('should render JokesControl component and match snapshot', () => {
+  const store = createStore(jokesReducer, { jokes: [] });
 
   const props: JokesControlProps = {
     jokesLength: 0,

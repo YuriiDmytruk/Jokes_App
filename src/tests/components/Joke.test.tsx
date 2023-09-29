@@ -7,11 +7,8 @@ import { MemoryRouter } from 'react-router-dom';
 import Joke from '../../components/Joke';
 import { Joke as JokeType } from '../../types';
 
-test('renders Joke correctly', () => {
-  const store = createStore(
-    jokesReducer,
-    { jokes: [] }
-  );
+test('should render Joke component and match snapshot', () => {
+  const store = createStore(jokesReducer, { jokes: [] });
 
   const joke: JokeType = {
     joke: 'SomeJoke',

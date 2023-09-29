@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 
-test('renders NavBar correctly', () => {
+test('should render NavBar component and match snapshot', () => {
   const { asFragment } = render(
     <MemoryRouter>
       <NavBar />
