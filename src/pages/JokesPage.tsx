@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import { JokesControl, JokesList, JokesPagination } from '../components/index';
 import { StyledJokesPage } from '../styled/JokesPage';
+
 import { JOKES } from '../redux/ducks/jokes';
 import { Joke } from '../types';
 

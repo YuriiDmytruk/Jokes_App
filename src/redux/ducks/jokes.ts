@@ -1,7 +1,7 @@
-import { Joke, JokesState, JokesActionFetch, JokesActionAdd, JokeDelete } from '../../types'
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
 
+import { Joke, JokesState, JokesActionFetch, JokesActionAdd, JokeDelete } from '../../types'
 import { fetchJokes as fetchJokesFromApi } from '../../api';
 
 export const ADD_JOKES = 'ADD_JOKES';

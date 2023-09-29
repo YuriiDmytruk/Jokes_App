@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
+
 import { JokesState, Joke } from '../types';
 
 const JokePopUp = (): JSX.Element => {

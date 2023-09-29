@@ -3,8 +3,10 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { jokesReducer } from '../../redux/ducks/jokes';
+
 import JokesControl from '../../components/JokesCotrol';
+
+import { jokesReducer } from '../../redux/ducks/jokes';
 import { JokesControlProps } from '../../types';
 
 test('should render JokesControl component and match snapshot', () => {

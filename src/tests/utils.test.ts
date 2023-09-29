@@ -1,4 +1,4 @@
-import { validateJokesAmountInput } from '../utils'; // Import your utility function
+import { validateJokesAmountInput } from '../utils';
 
 describe('validateJokesAmountInput', () => {
   it('should return true for valid input (between 1 and 10)', () => {

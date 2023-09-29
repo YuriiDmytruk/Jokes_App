@@ -1,5 +1,6 @@
-import { fetchJokes, getRandomCategory } from '../api';
 import fetchMock from 'jest-fetch-mock';
+
+import { fetchJokes, getRandomCategory } from '../api';
 
 fetchMock.enableMocks();
 
