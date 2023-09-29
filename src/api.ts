@@ -36,4 +36,3 @@ export const fetchJokes = async (
 const categories = ['Programming', 'Dad Joke', 'Animals', 'Car Joke'];
 export const getRandomCategory = (): string =>
   categories[Math.floor(Math.random() * categories.length)];
-  
