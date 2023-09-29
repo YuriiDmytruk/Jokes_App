@@ -31,21 +31,21 @@ export const jokesReducer = (
   }
 };
 
-export const deleteJoke = (id: number): JokeDelete => {
+export const deleteJoke = (id: number = -1): JokeDelete => {
   return {type: DELETE_JOKE, id: id}
 }
 
-export const setJokes = (jokes: Joke[]): JokesActionAdd => {
+export const setJokes = (jokes: Joke[] = []): JokesActionAdd => {
   return { type: SET_JOKES, jokes: jokes };
 }
 
-export const addJokes = (jokes: Joke[]): JokesActionAdd => {
+export const addJokes = (jokes: Joke[] = []): JokesActionAdd => {
   return { type: ADD_JOKES, jokes: jokes };
 }
 
 export const fetchJokes = (
-  jokesLastID: number,
-  jokesAmount: number
+  jokesLastID: number = 0,
+  jokesAmount: number = 1
 ): JokesActionFetch => {
   return {
     type: FETCH_JOKES,

@@ -9,7 +9,7 @@ describe('fetchJokes', () => {
     fetchMock.resetMocks();
   });
 
-  it('fetches jokes and returns them correctly', async () => {
+  it('should fetches jokes and returns them correctly', async () => {
     const jokesLastID = 0;
     const jokesAmount = 5;
     const mockJokesData = [
@@ -27,7 +27,6 @@ describe('fetchJokes', () => {
 
     const jokes = await fetchJokes(jokesLastID, jokesAmount);
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(fetchMock).toHaveBeenCalledWith(
       'https://api.api-ninjas.com/v1/dadjokes?limit=5',
       {
@@ -47,7 +46,7 @@ describe('fetchJokes', () => {
     ]);
   });
 
-  it('handles network errors gracefully', async () => {
+  it('should handles network errors and return empty array ', async () => {
     fetchMock.mockReject(new Error('Network error'));
 
     const jokesLastID = 0;
@@ -58,16 +57,17 @@ describe('fetchJokes', () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(jokes).toEqual([]);
   });
+
+  it('should call only once ', async () => {
+    fetchMock.mockReject(new Error('Network error'));
+    await fetchJokes(0, 0);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('getRandomCategory', () => {
-  it('returns a string', () => {
+  it('should always return string', () => {
     const category = getRandomCategory();
     expect(typeof category).toBe('string');
-  });
-
-  it('not returns udefined', () => {
-    const category = getRandomCategory();
-    expect(category).not.toBe(undefined);
   });
 });
