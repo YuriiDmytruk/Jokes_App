@@ -9,4 +9,5 @@ module.exports = {
   transform: {
     '^.+\\.[jt]sx?$': 'babel-jest',
   },
+  snapshotResolver: './custom-snapshot-resolver.js',
 };

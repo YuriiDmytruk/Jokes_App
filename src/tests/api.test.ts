@@ -1,4 +1,4 @@
-import { fetchJokes } from '../../api';
+import { fetchJokes, getRandomCategory } from '../api';
 import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();
@@ -56,5 +56,17 @@ describe('fetchJokes', () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(jokes).toEqual([]);
+  });
+});
+
+describe('getRandomCategory', () => {
+  it('returns a string', () => {
+    const category = getRandomCategory();
+    expect(typeof category).toBe('string');
+  });
+
+  it('not returns udefined', () => {
+    const category = getRandomCategory();
+    expect(category).not.toBe(undefined);
   });
 });

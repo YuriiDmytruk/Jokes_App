@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders JokesList correctly 1`] = `
+exports[`should render JokesList component and match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container"
