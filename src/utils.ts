@@ -7,4 +7,3 @@ export const validateJokesAmountInput = (value: string): boolean => {
     }
     return false;
 };
-  
