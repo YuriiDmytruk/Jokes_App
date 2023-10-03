@@ -18,7 +18,6 @@ import { validateJokesAmountInput } from '../utils';
 import { JokesControlProps } from '../types';
 
 const JokesControl = (props: JokesControlProps): JSX.Element => {
-  debugger;
   const [amount, setAmount] = useState<string>('');
   const [filter, setFilter] = useState<string>(props.all);
   const [isValid, setValid] = useState<boolean>(amount !== '');

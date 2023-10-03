@@ -12,7 +12,7 @@ export const DELETE_JOKE = 'DELETE_JOKE'
 export const JOKES = 'JOKES'
 
 const defaultState: JokesState = {
-  jokes: JSON.parse(localStorage.getItem(JOKES)!)
+  jokes: JSON.parse(localStorage.getItem(JOKES) || '[]')
 };
 
 export const jokesReducer = (

@@ -13,7 +13,7 @@ const JOKES_ON_PAGE = 12;
 const JokesPage = (): JSX.Element => {
   const [filter, setFilter] = useState<string>(ALL);
   const [page, setPage] = useState<number>(1);
-  const jokes: Joke[] = useSelector((state: any) => state.jokes);
+  const jokes: Joke[] = useSelector((state: any) => state.jokes) ?? [];
 
   useEffect(() => {
     localStorage.setItem(JOKES, JSON.stringify(jokes));
