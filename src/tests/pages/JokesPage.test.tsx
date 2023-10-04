@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { createStore } from 'redux';
-import { render, fireEvent, screen, act } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
 import JokesPage from '../../pages/JokesPage';
@@ -48,21 +48,20 @@ test('should filter jokes correctly when filter is "ALL"', async () => {
   );
 
   // Wrap the initial click in act
-  await act(() => {
-    const DropdownButton = screen.getByTestId('DropdownButton');
-    const buttonInsideDropdown = DropdownButton.querySelector('button');
-    if (buttonInsideDropdown) {
-      fireEvent.click(buttonInsideDropdown);
-    }
-  });
+
+  const DropdownButton = screen.getByTestId('DropdownButton');
+  const buttonInsideDropdown = DropdownButton.querySelector('button');
+  if (buttonInsideDropdown) {
+    fireEvent.click(buttonInsideDropdown);
+  }
 
   // Wrap the state-updating code for filter selection in act
-  await act(() => {
-    const DropdownButtonOptionPrograming = screen.getByTestId('Programming');
-    fireEvent.click(DropdownButtonOptionPrograming);
-  });
+
+  const DropdownButtonOptionPrograming = screen.getByTestId('Programming');
+  fireEvent.click(DropdownButtonOptionPrograming);
 
   // Wrap any subsequent actions that may cause state updates in act as well
-
-  expect(screen.queryByText('Joke 2...')).toBeNull();
+  await waitFor(() => {
+    expect(screen.queryByText('Joke 2...')).toBeNull();
+  });
 });
