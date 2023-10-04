@@ -193,3 +193,29 @@ describe('Test input', () => {
     expect(button).not.toHaveAttribute('disabled');
   });
 });
+
+describe('Test delete button on Joke', () => {
+  it('should delete joke', async () => {
+    const jokes = [
+      { id: 1, category: 'Programming', joke: 'Joke 1' },
+      { id: 2, category: 'Funny', joke: 'Joke 2' },
+    ];
+
+    const store = createStore(jokesReducer, { jokes: jokes });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const deleteButton = screen.getByTestId('deleteButton1');
+
+    fireEvent.click(deleteButton);
+
+    const jokesComponents = await screen.findAllByTestId('Joke');
+    expect(jokesComponents).toHaveLength(1);
+  });
+});

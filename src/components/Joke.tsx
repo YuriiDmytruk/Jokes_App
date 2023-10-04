@@ -23,7 +23,7 @@ const Joke = (props: JokeProps): JSX.Element => {
   };
 
   return (
-    <Col>
+    <Col data-testid="Joke">
       <Container>
         <CardSize>
           <Card>
@@ -38,13 +38,22 @@ const Joke = (props: JokeProps): JSX.Element => {
                 <Col>
                   <CenterButton>
                     <Link to={`/joke/${props.joke.id}`}>
-                      <Button variant="primary">Check</Button>
+                      <Button
+                        variant="primary"
+                        data-testid={'checkButton' + props.joke.id}
+                      >
+                        Check
+                      </Button>
                     </Link>
                   </CenterButton>
                 </Col>
                 <Col>
                   <CenterButton>
-                    <Button variant="danger" onClick={onDelete}>
+                    <Button
+                      variant="danger"
+                      onClick={onDelete}
+                      data-testid={'deleteButton' + props.joke.id}
+                    >
                       Delete
                     </Button>
                   </CenterButton>
