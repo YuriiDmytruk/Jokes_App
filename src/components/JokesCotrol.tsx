@@ -92,11 +92,17 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
               <Col md="auto">
                 <DropdownButton
                   key="Primary"
+                  data-testid="DropdownButton"
                   onSelect={(eventKey) => changeFilter(eventKey)}
                   title={filter}
                 >
                   {[props.all, ...props.categories].map((category, index) => (
-                    <Dropdown.Item key={index} eventKey={category}>
+                    <Dropdown.Item
+                      key={index}
+                      data-testid={category}
+                      eventKey={category}
+                      value={category}
+                    >
                       {category}
                     </Dropdown.Item>
                   ))}

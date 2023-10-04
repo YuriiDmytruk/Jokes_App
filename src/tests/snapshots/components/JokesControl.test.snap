@@ -63,6 +63,7 @@ exports[`should render JokesControl component and match snapshot 1`] = `
             >
               <div
                 class="dropdown"
+                data-testid="DropdownButton"
               >
                 <button
                   aria-expanded="false"
