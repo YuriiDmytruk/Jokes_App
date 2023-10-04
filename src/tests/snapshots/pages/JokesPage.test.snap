@@ -25,6 +25,7 @@ exports[`should render JokesPage component and match snapshot 1`] = `
               >
                 <input
                   class="form-control"
+                  data-testid="AmountInput"
                   id="inputAmount"
                   type="text"
                   value=""
@@ -40,6 +41,7 @@ exports[`should render JokesPage component and match snapshot 1`] = `
               >
                 <button
                   class="btn btn-primary"
+                  data-testid="ButtonAdd"
                   disabled=""
                   type="button"
                 >

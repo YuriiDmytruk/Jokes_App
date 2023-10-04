@@ -2,7 +2,9 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
+import '@testing-library/jest-dom';
 
 import JokesPage from '../../pages/JokesPage';
 
@@ -30,7 +32,7 @@ test('should render JokesPage component and match snapshot', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-describe('Test filter function', () => {
+describe('Test filter', () => {
   it('should filter jokes when filter is not "ALL"', async () => {
     const jokes = [
       { id: 1, category: 'Programming', joke: 'Joke 1' },
@@ -63,7 +65,7 @@ describe('Test filter function', () => {
 });
 
 describe('Test pagination', () => {
-  it('should not show pagination if jokes count < 13', async () => {
+  it('should not show pagination if jokes count < 13', () => {
     const jokes = [
       { id: 1, category: 'Programming', joke: 'Joke 1' },
       { id: 2, category: 'Funny', joke: 'Joke 2' },
@@ -82,7 +84,7 @@ describe('Test pagination', () => {
     expect(screen.queryByTestId('Pagination')).toBeNull();
   });
 
-  it('should show pagination if jokes count > 13', async () => {
+  it('should show pagination if jokes count > 13', () => {
     const jokes = [
       { id: 1, category: 'any', joke: 'Joke' },
       { id: 2, category: 'any', joke: 'Joke' },
@@ -110,6 +112,84 @@ describe('Test pagination', () => {
       </Provider>
     );
 
-    expect(screen.getByTestId('Pagination')).toBeTruthy();
+    expect(screen.getByTestId('Pagination')).toBeInTheDocument();
+  });
+});
+
+describe('Test input', () => {
+  it('should be disabled button Add when input = "0"', async () => {
+    const store = createStore(jokesReducer, { jokes: [] });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const input = screen.getByTestId('AmountInput');
+    const button = screen.getByTestId('ButtonAdd');
+
+    userEvent.type(input, '0');
+
+    expect(button).toHaveAttribute('disabled');
+  });
+
+  it('should be disabled button Add when input = "13"', async () => {
+    const store = createStore(jokesReducer, { jokes: [] });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const input = screen.getByTestId('AmountInput');
+    const button = screen.getByTestId('ButtonAdd');
+
+    userEvent.type(input, '13');
+
+    expect(button).toHaveAttribute('disabled');
+  });
+
+  it('should be disabled button Add when input = "abc"', async () => {
+    const store = createStore(jokesReducer, { jokes: [] });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const input = screen.getByTestId('AmountInput');
+    const button = screen.getByTestId('ButtonAdd');
+
+    userEvent.type(input, 'abc');
+
+    expect(button).toHaveAttribute('disabled');
+  });
+
+  it('should not be disabled button Add when input = "6"', async () => {
+    const store = createStore(jokesReducer, { jokes: [] });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const input = screen.getByTestId('AmountInput');
+    const button = screen.getByTestId('ButtonAdd');
+
+    userEvent.type(input, '6');
+
+    expect(button).not.toHaveAttribute('disabled');
   });
 });

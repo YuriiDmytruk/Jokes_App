@@ -60,6 +60,7 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
             <Row>
               <Col>
                 <Form.Control
+                  data-testid="AmountInput"
                   type="text"
                   id="inputAmount"
                   value={amount}
@@ -72,7 +73,11 @@ const JokesControl = (props: JokesControlProps): JSX.Element => {
                 </Form.Text>
               </Col>
               <Col md="auto">
-                <Button disabled={!isValid} onClick={changeAmount}>
+                <Button
+                  disabled={!isValid}
+                  onClick={changeAmount}
+                  data-testid="ButtonAdd"
+                >
                   Add
                 </Button>
               </Col>
