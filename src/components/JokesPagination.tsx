@@ -46,7 +46,7 @@ const JokesPagination = (props: JokesPaginationProps): JSX.Element => {
   return (
     <Footer>
       {pages > 0 ? (
-        <Pagination className="justify-content-center">
+        <Pagination className="justify-content-center" data-testid="Pagination">
           <Pagination.Prev disabled={props.page === 1} onClick={onPrevClick} />
           {createPaginationItems()}
           <Pagination.Next

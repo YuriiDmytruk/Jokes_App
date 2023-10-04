@@ -30,38 +30,86 @@ test('should render JokesPage component and match snapshot', async () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-test('should filter jokes correctly when filter is "ALL"', async () => {
-  // Mark the test function as async
-  const jokes = [
-    { id: 1, category: 'Programming', joke: 'Joke 1' },
-    { id: 2, category: 'Funny', joke: 'Joke 2' },
-  ];
+describe('Test filter function', () => {
+  it('should filter jokes when filter is not "ALL"', async () => {
+    const jokes = [
+      { id: 1, category: 'Programming', joke: 'Joke 1' },
+      { id: 2, category: 'Funny', joke: 'Joke 2' },
+    ];
 
-  const store = createStore(jokesReducer, { jokes: jokes });
+    const store = createStore(jokesReducer, { jokes: jokes });
 
-  const { container } = render(
-    <Provider store={store}>
-      <MemoryRouter>
-        <JokesPage />
-      </MemoryRouter>
-    </Provider>
-  );
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
 
-  // Wrap the initial click in act
+    const DropdownButton = screen.getByTestId('DropdownButton');
+    const buttonInsideDropdown = DropdownButton.querySelector('button');
+    if (buttonInsideDropdown) {
+      fireEvent.click(buttonInsideDropdown);
+    }
 
-  const DropdownButton = screen.getByTestId('DropdownButton');
-  const buttonInsideDropdown = DropdownButton.querySelector('button');
-  if (buttonInsideDropdown) {
-    fireEvent.click(buttonInsideDropdown);
-  }
+    const DropdownButtonOptionPrograming = screen.getByTestId('Programming');
+    fireEvent.click(DropdownButtonOptionPrograming);
 
-  // Wrap the state-updating code for filter selection in act
+    await waitFor(() => {
+      expect(screen.queryByText('Joke 2...')).toBeNull();
+    });
+  });
+});
 
-  const DropdownButtonOptionPrograming = screen.getByTestId('Programming');
-  fireEvent.click(DropdownButtonOptionPrograming);
+describe('Test pagination', () => {
+  it('should not show pagination if jokes count < 13', async () => {
+    const jokes = [
+      { id: 1, category: 'Programming', joke: 'Joke 1' },
+      { id: 2, category: 'Funny', joke: 'Joke 2' },
+    ];
 
-  // Wrap any subsequent actions that may cause state updates in act as well
-  await waitFor(() => {
-    expect(screen.queryByText('Joke 2...')).toBeNull();
+    const store = createStore(jokesReducer, { jokes: jokes });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    expect(screen.queryByTestId('Pagination')).toBeNull();
+  });
+
+  it('should show pagination if jokes count > 13', async () => {
+    const jokes = [
+      { id: 1, category: 'any', joke: 'Joke' },
+      { id: 2, category: 'any', joke: 'Joke' },
+      { id: 3, category: 'any', joke: 'Joke' },
+      { id: 4, category: 'any', joke: 'Joke' },
+      { id: 5, category: 'any', joke: 'Joke' },
+      { id: 6, category: 'any', joke: 'Joke' },
+      { id: 7, category: 'any', joke: 'Joke' },
+      { id: 8, category: 'any', joke: 'Joke' },
+      { id: 9, category: 'any', joke: 'Joke' },
+      { id: 10, category: 'any', joke: 'Joke' },
+      { id: 11, category: 'any', joke: 'Joke' },
+      { id: 12, category: 'any', joke: 'Joke' },
+      { id: 13, category: 'any', joke: 'Joke' },
+      { id: 14, category: 'any', joke: 'Joke' },
+    ];
+
+    const store = createStore(jokesReducer, { jokes: jokes });
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <JokesPage />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    expect(screen.getByTestId('Pagination')).toBeTruthy();
   });
 });
