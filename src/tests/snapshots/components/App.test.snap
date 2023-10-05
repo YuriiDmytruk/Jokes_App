@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render App component and match snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="bg-body-tertiary navbar navbar-expand-lg navbar-light"
+  >
+    <div
+      class="container"
+    >
+      <a
+        href="/"
+      >
+        <span
+          class="navbar-brand"
+        >
+          Jokes
+        </span>
+      </a>
+    </div>
+  </nav>
+  <div
+    class="sc-jTQDJr kpRtxU"
+  >
+    <div
+      class="sc-hLQTFJ RsoUG"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col"
+              >
+                <input
+                  class="form-control"
+                  data-testid="AmountInput"
+                  id="inputAmount"
+                  type="text"
+                  value=""
+                />
+                <small
+                  class="form-text text-muted"
+                >
+                  Enter the number of jokes to add. Value must be 1-10.
+                </small>
+              </div>
+              <div
+                class="col-md-auto"
+              >
+                <button
+                  class="btn btn-primary"
+                  data-testid="ButtonAdd"
+                  disabled=""
+                  type="button"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col"
+              >
+                <div
+                  class="sc-eDLKEg gdFpvh"
+                />
+              </div>
+              <div
+                class="col-md-auto"
+              >
+                <div
+                  class="dropdown"
+                  data-testid="DropdownButton"
+                >
+                  <button
+                    aria-expanded="false"
+                    class="dropdown-toggle btn btn-primary"
+                    type="button"
+                  >
+                    ALL
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      />
+    </div>
+    <div
+      class="sc-gLLuHO jAEUbP"
+    />
+  </div>
+</DocumentFragment>
+`;
